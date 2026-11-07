@@ -40,9 +40,21 @@ and a colour-calibration GUI.
 ```bash
 git clone https://github.com/RiccaDS/lims-camera-mic-fixes.git
 cd lims-camera-mic-fixes
-sudo bash install.sh
+sudo bash install.sh                # both fixes (camera + microphone)
+sudo bash install.sh --camera       # camera / Virtual Camera / LED / GUI only
+sudo bash install.sh --mic          # microphone only (no camera packages, no units)
 # reboot once so the SOF microphone driver takes over cleanly
 ```
+
+Install the parts **separately** if you want only one of them:
+
+| Command | What it installs | What it does *not* touch |
+|---|---|---|
+| `sudo bash install.sh` | camera **and** microphone | — |
+| `sudo bash install.sh --camera` | packages, `/opt/lims-camera`, 4 units, exposure, LED gate, GUI | **audio driver** (your `alsa-base.conf` stays as-is) |
+| `sudo bash install.sh --mic` | `dsp_driver=3` + initramfs (audio only) | **no camera packages, no units** |
+
+Each part is also its own script (`mic/install-mic.sh`), and reverting one part does not revert the other (`mic/uninstall-mic.sh` reverts audio only; `sudo bash uninstall.sh` removes everything).
 
 No git? Download the release tarball, extract it, run the same command.
 
