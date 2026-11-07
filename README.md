@@ -34,8 +34,6 @@ and a colour-calibration GUI.
 | 🎨 **Colour calibration GUI** | Live sliders (colour temperature, tint, R/G/B gains, gamma, brightness, contrast, saturation) + **Live auto white-balance** at `http://127.0.0.1:8192`, previewing exactly what apps will send. |
 | ☀️ **Usable exposure** | This sensor has **no auto-exposure on Linux** — the installer sets measured exposure/gain so a normal room isn't pitch black. |
 
-> 🖼️ **No screenshots on purpose** — this repository ships zero personal images or personal data.
-> All measured numbers live in [`docs/EVIDENCE.md`](docs/EVIDENCE.md); the pipeline is drawn in ASCII below.
 
 ## 🚀 Quick install
 
