@@ -1,0 +1,13 @@
+{
+ "cfa_order": "GBRG",
+ "awb_live": 1.0,
+ "temp": 0.0,
+ "tint": 0.0,
+ "gain_r": 1.0,
+ "gain_g": 1.0,
+ "gain_b": 1.0,
+ "gamma": 0.95,
+ "saturation": 1.15,
+ "brightness": 4.0,
+ "contrast": 1.02
+}

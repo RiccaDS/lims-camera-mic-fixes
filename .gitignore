@@ -1,0 +1,4 @@
+__pycache__/
+*.pyc
+cam_config.json
+*.log

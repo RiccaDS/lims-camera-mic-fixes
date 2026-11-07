@@ -1,0 +1,12 @@
+[Unit]
+Description=LIMS camera bridge — IPU6 raw mosaic to 720p YUY2 stream (TCP 8092) + privacy LED gate
+After=network.target
+
+[Service]
+ExecStart=@PYTHON@ @INSTALL_DIR@/cam_bridge.py
+Restart=always
+RestartSec=3
+Environment=CAM_BRIDGE_FPS=15
+
+[Install]
+WantedBy=default.target

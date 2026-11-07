@@ -1,0 +1,15 @@
+[Unit]
+Description=LIMS camera writer — bridges the stream into /dev/video0 (Virtual Camera, 1280x720 YUY2 @15)
+After=network.target lancia-cam-exposure.service
+Requires=lancia-cam-exposure.service
+
+[Service]
+Type=simple
+ExecStartPre=/bin/bash -c '/usr/sbin/rmmod v4l2loopback 2>/dev/null || true; /usr/sbin/modprobe v4l2loopback exclusive_caps=1 card_label=Virtual Camera video_nr=0 || test -e /dev/video0'
+ExecStart=/usr/bin/gst-launch-1.0 -q tcpclientsrc host=127.0.0.1 port=8092 ! rawvideoparse format=yuy2 width=1280 height=720 ! videorate ! video/x-raw,format=YUY2,width=1280,height=720,framerate=15/1 ! v4l2sink device=/dev/video0 sync=false
+Restart=always
+RestartSec=3
+ExecStartPost=@INSTALL_DIR@/lancia-cam-wireplumber.sh
+
+[Install]
+WantedBy=multi-user.target

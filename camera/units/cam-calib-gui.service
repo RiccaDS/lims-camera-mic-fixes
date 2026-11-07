@@ -1,0 +1,12 @@
+[Unit]
+Description=LIMS camera colour calibration GUI (http://127.0.0.1:8192)
+After=cam-bridge.service
+Wants=cam-bridge.service
+
+[Service]
+ExecStart=@PYTHON@ @INSTALL_DIR@/cam_calib_gui.py
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
